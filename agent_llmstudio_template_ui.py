@@ -25,7 +25,7 @@ iface = gr.Interface(
     inputs="text",
     outputs="text",
     title=" Agent Chat",
-    description="Chat with the library agent to ask questions or perform actions."
+    description="Chat with the model to ask questions or perform actions."
 )
 
 # Launch the Gradio interface
