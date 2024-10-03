@@ -6,3 +6,6 @@
 # conda install pytorch torchvision torchaudio cpuonly -c pytorch
 # pip install llama-index-llms-huggingface-api
 # pip install llama_index.tools.yahoo_finance
+
+# Installng portkeyai/gateway
+#docker run -d -p 8787:8787 portkeyai/gateway:latest
