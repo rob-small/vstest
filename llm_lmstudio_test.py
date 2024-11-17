@@ -2,7 +2,7 @@ from llama_index.llms.lmstudio import LMStudio
 from llama_index.core.base.llms.types import ChatMessage, MessageRole
 
 llm = LMStudio(
-    model_name="lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf",
+    model_name="llama-3.2-3b-instruct",
     base_url="http://localhost:1234/v1",
     temperature=0.7,
 )

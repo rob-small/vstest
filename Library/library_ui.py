@@ -89,9 +89,9 @@ add_book = FunctionTool.from_defaults(fn=add_book )
 check_out = FunctionTool.from_defaults(fn=check_out)
 check_in = FunctionTool.from_defaults(fn=check_in)
 is_available = FunctionTool.from_defaults(fn=is_available)
-list_books = FunctionTool.from_defaults(fn=list_available_books)
+list_available_books = FunctionTool.from_defaults(fn=list_available_books)
 
-agent = ReActAgent.from_tools([add_book, check_out, check_in, is_available, list_books], llm=llm, verbose=True, max_iterations=50)
+agent = ReActAgent.from_tools([add_book, check_out, check_in, is_available, list_available_books], llm=llm, verbose=True, max_iterations=50)
 agent.update_prompts({"agent_worker:system_prompt": react_system_prompt})
 
 # Define function to handle user queries and return responses from the model
@@ -130,7 +130,7 @@ with gr.Blocks() as demo:
     with gr.Tab("List Books"):
         list_books_button = gr.Button("List Books")
         list_books_output = gr.Textbox(label="Books", interactive=False,lines=5)
-        list_books_button.click(list_books, outputs=list_books_output)
+        list_books_button.click(list_available_books, outputs=list_books_output)
 
     with gr.Tab("Chat with Agent"):
         chatbot = gr.ChatInterface(
