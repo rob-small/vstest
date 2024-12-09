@@ -48,5 +48,5 @@ query_engine = RetrieverQueryEngine(
 )
 
 # query
-response = query_engine.query("What is an Accelerator Workshop?")
+response = query_engine.query("What is DMG Blockchain Solutions core business?")
 print(response)
