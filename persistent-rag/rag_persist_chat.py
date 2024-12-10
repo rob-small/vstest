@@ -14,22 +14,26 @@ from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 from llama_index.llms.lmstudio import LMStudio
 
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-from llama_index.core import Settings
 
+from llama_index.core import Settings
 Settings.embed_model = HuggingFaceEmbedding(
     model_name="BAAI/bge-small-en-v1.5"
 )
 
+# Load the index from disk
+from llama_index.core import StorageContext, load_index_from_storage
+
+# rebuild storage context
+storage_context = StorageContext.from_defaults(persist_dir="index.json")
+
+# load index
+index = load_index_from_storage(storage_context)
+
 Settings.llm = LMStudio(
-    model_name="lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf",
+    model_name="Hermes-2-Pro-Llama-3-8B",
     base_url="http://localhost:1234/v1",
     temperature=0.7,
 )
-
-documents = SimpleDirectoryReader("data").load_data()
-
-# build index
-index = VectorStoreIndex.from_documents(documents)
 
 # configure retriever
 retriever = VectorIndexRetriever(
